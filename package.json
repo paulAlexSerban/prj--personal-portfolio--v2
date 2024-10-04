@@ -5,10 +5,5 @@
   "author": "Paul Serban <paul.alex.serban@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build:all": "nx run-many --target=build --all",
-    "nx:graph": "nx graph"
-  },
-  "devDependencies": {
-    "nx": "19.8.3"
   }
 }
