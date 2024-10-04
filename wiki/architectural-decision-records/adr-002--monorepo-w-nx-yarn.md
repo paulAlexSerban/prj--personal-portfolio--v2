@@ -1,6 +1,6 @@
 # ADR-002: Choosing Monorepo Setup with Nx and Yarn
 
-Status: Accepted
+> Status: Accepted
 
 ## Context
 The personal portfolio project is expected to grow over time, with multiple components working together, including:

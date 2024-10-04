@@ -1,6 +1,6 @@
 # ADR-001: Choosing Node.js 20.18 (LTS) for Server-Side Technology
 
-Status: Accepted
+> Status: Accepted
 
 ## Context
 
