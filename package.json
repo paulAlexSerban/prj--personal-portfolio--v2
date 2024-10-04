@@ -1,7 +1,14 @@
 {
-  "name": "@prj--personal-portfolio--v2/core",
+  "name": "@prj-pp-v2/core",
   "version": "0.0.1",
   "repository": "https://github.com/paulAlexSerban/prj--personal-portfolio--v2.git",
   "author": "Paul Serban <paul.alex.serban@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build:all": "nx run-many --target=build --all",
+    "nx:graph": "nx graph"
+  },
+  "devDependencies": {
+    "nx": "19.8.3"
+  }
 }
