@@ -5,8 +5,11 @@
   "repository": "https://github.com/paulAlexSerban/prj--personal-portfolio--v2.git",
   "author": "Paul Serban <paul.alex.serban@gmail.com>",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "prepare": "husky"
+  },
   "dependencies": {
+    "husky": "^9.1.6",
     "lerna": "^8.1.8"
   },
   "devDependencies": {},
@@ -27,5 +30,11 @@
     "nohoist": [
       "**/normalize-scss"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
