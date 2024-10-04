@@ -1,4 +1,4 @@
 # To Do's
-- [ ] integrate yarn
+- [x] integrate yarn
 - [ ] integrate nx
 - [ ] setup basic folder structure
