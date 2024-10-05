@@ -1,55 +1,55 @@
 {
-  "name": "@prj-pp-v2/core",
-  "version": "0.0.1",
-  "keywords": [],
-  "repository": "https://github.com/paulAlexSerban/prj--personal-portfolio--v2.git",
-  "author": "Paul Serban <paul.alex.serban@gmail.com>",
-  "license": "MIT",
-  "scripts": {
-    "//": "FORMATS",
-    "formats:check": "yarn prettier --check .",
-    "formats:write": "yarn prettier --write .",
-    "/": "GIT",
-    "commit": "yarn git-cz",
-    "prepare": "husky"
-  },
-  "dependencies": {
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
-    "commitizen": "^4.3.1",
-    "cz-conventional-changelog": "^3.3.0",
-    "husky": "^9.1.6",
-    "lerna": "^8.1.8",
-    "prettier": "^3.3.3"
-  },
-  "devDependencies": {},
-  "private": true,
-  "workspaces": {
-    "packages": [
-      "assets/*",
-      "assets/**/*",
-      "backend/*",
-      "backend/**/*",
-      "database/*",
-      "frontend/*",
-      "frontend/**/*",
-      "shared/*",
-      "shared/**/*",
-      "tools/*"
-    ],
-    "nohoist": [
-      "**/normalize-scss"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    "name": "@prj-pp-v2/core",
+    "version": "0.0.1",
+    "keywords": [],
+    "repository": "https://github.com/paulAlexSerban/prj--personal-portfolio--v2.git",
+    "author": "Paul Serban <paul.alex.serban@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "//": "FORMATS",
+        "formats:check": "yarn prettier --check .",
+        "formats:write": "yarn prettier --write .",
+        "/": "GIT",
+        "commit": "yarn git-cz",
+        "prepare": "husky"
+    },
+    "dependencies": {
+        "@commitlint/cli": "^19.5.0",
+        "@commitlint/config-conventional": "^19.5.0",
+        "commitizen": "^4.3.1",
+        "cz-conventional-changelog": "^3.3.0",
+        "husky": "^9.1.6",
+        "lerna": "^8.1.8",
+        "prettier": "^3.3.3"
+    },
+    "devDependencies": {},
+    "private": true,
+    "workspaces": {
+        "packages": [
+            "assets/*",
+            "assets/**/*",
+            "backend/*",
+            "backend/**/*",
+            "database/*",
+            "frontend/*",
+            "frontend/**/*",
+            "shared/*",
+            "shared/**/*",
+            "tools/*"
+        ],
+        "nohoist": [
+            "**/normalize-scss"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true",
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
     }
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  }
 }
