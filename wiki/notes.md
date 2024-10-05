@@ -1,12 +1,9 @@
 # Notes
-- husky
-- commit lint and commitizen
 - semantical versioning
 - git hub actions
-- docker & k8s for local development
+- docker & docker compose
 - makefile for build scripts
 - bash script for complex shell commands and scripts
-- use TypeScript
 - React.js
 - Next.js
 - AWS Security to avoid huge bill because of DDOS attack
