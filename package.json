@@ -6,6 +6,12 @@
     "author": "Paul Serban <paul.alex.serban@gmail.com>",
     "license": "MIT",
     "scripts": {
+        "/////":"TEST",
+        "test": "lerna run test --parallel",
+        "////": "DEVELOP",
+        "develop:api-ts-boilerplate": "lerna run --scope @prj-pp-v2/_api-ts-boilerplate develop",
+        "///": "BUILD",
+        "build:api-ts-boilerplate": "lerna run --scope @prj-pp-v2/_api-ts-boilerplate build",
         "//": "FORMATS",
         "formats:check": "yarn prettier --check .",
         "formats:write": "yarn prettier --write .",

@@ -1,0 +1,29 @@
+{
+    "name": "@prj-pp-v2/_api-ts-boilerplate",
+    "version": "0.0.0",
+    "private": true,
+    "main": "dist/bin/www.js",
+    "scripts": {
+        "develop": "concurrently \"yarn tsc --watch\" \"nodemon -q /dist/bin/www.js\"",
+        "start": "NODE_ENV=production node ./dist/bin/www.js",
+        "build": "yarn tsc",
+        "test": "echo \"Error: no test specified\""
+    },
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "concurrently": "^8.2.2",
+        "cookie-parser": "^1.4.6",
+        "debug": "~2.6.9",
+        "express": "^4.21.0",
+        "morgan": "~1.9.1",
+        "nodemon": "^2.0.22"
+    },
+    "devDependencies": {
+        "@types/cookie-parser": "^1.4.6",
+        "@types/debug": "^4.1.12",
+        "@types/express": "^5.0.0",
+        "@types/morgan": "^1.9.9",
+        "@types/node": "^20.10.0",
+        "typescript": "^5.2.2"
+    }
+}
