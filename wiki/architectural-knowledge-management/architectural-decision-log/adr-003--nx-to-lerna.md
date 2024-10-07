@@ -1,6 +1,7 @@
 # ADR-003: Transitioning from Nx to Lerna for Monorepo Management
 
-> Status: Accepted
+## Status
+Accepted
 
 ## Context
 
