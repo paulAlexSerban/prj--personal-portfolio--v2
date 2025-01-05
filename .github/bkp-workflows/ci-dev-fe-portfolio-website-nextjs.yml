@@ -46,11 +46,9 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: "🔧  Install npm@latest & CI Deps"
+      - name: "🔧 CI Deps"
         if: ${{ always() }}
-        run: |
-          npm i -g npm@latest
-          npm ci
+        run: npm ci
 
       #   @INFO - this part is needed when assets module will be functional
       # - name: "Install GraphicsMagick"
