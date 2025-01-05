@@ -29,13 +29,13 @@ export default function Footer() {
                 <div className={footerNav}>
                     <LinkList
                         links={[
-                            {
-                                label: resume.label,
-                                href: resume.url,
-                                isEncoded: false,
-                                isInternal: true,
-                                isDownload: true,
-                            },
+                            // {
+                            //     label: resume.label,
+                            //     href: resume.url,
+                            //     isEncoded: false,
+                            //     isInternal: true,
+                            //     isDownload: true,
+                            // },
                             {
                                 label: 'Portfolio',
                                 href: '/portfolio',
