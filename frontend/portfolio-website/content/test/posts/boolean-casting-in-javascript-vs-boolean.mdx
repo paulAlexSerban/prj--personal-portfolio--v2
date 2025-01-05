@@ -79,3 +79,10 @@ JavaScript, with its flexibility, offers developers various approaches to common
 With this guide, we hope you are better equipped to make an informed decision on Boolean conversion in JavaScript, enhancing the clarity and quality of your work in this ubiquitous and ever-evolving programming language.
 
 **Final Thoughts**: As JavaScript continues to dominate the world of web development, understanding its idiosyncrasies, such as the nuances of Boolean conversion with the !! operator and the Boolean() constructor, becomes increasingly important. Always prioritize readability and maintainability in your code—these are the hallmarks of a truly great developer.
+
+## Test - Remark GFM plugin
+| **Feature**                   | **React 16 (Macrotask Analogy)**               | **React 18 (Microtask Analogy)**                       |
+|---------------------------|--------------------------------------------|----------------------------------------------------|
+| Timing of useEffect | Deferred until after paint (asynchronous). | Runs before the next discrete input (synchronous). |
+| Impact on Paint       | Heavy computations don't block paint.      | Heavy computations can delay paint.                |
+| Priority              | Lower priority, queued for later.          | Higher priority for discrete inputs.               |
