@@ -6,7 +6,7 @@
     "author": "Paul Serban <paul.alex.serban@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "/////":"TEST",
+        "/////": "TEST",
         "test": "lerna run test --parallel",
         "////": "DEVELOP",
         "develop:base-ssg-service": "lerna run --scope @prj-pp-v2/base-ssg-service develop",
@@ -22,11 +22,13 @@
     "dependencies": {
         "@commitlint/cli": "^19.5.0",
         "@commitlint/config-conventional": "^19.5.0",
+        "@types/node": "^22.10.5",
         "commitizen": "^4.3.1",
         "cz-conventional-changelog": "^3.3.0",
         "husky": "^9.1.6",
         "lerna": "^8.1.8",
-        "prettier": "^3.3.3"
+        "prettier": "^3.3.3",
+        "typescript": "^5.7.3"
     },
     "devDependencies": {},
     "private": true,
