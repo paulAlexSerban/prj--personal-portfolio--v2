@@ -16,3 +16,8 @@
 - CBD - Component Based Development
 - book: refactoring
 - Page router vs app router in next.js
+- post-type: cheat-sheet - new
+- feature: search - new
+- feature: pagination
+- feature: flashcard questions per tutorial post
+- feature-improvement: add set of questions to personal library to practice with flashcards
