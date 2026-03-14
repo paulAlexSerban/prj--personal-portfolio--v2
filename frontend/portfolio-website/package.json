@@ -12,6 +12,7 @@
     "package": "bash scripts/package.bash"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1009.0",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.4.9",
