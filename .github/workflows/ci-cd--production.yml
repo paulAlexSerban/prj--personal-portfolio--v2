@@ -73,7 +73,7 @@ jobs:
               with:
                   node-version: ${{ env.NODE_VERSION }}
 
-            - name: '🔧  CI Deps'
+            - name: '🔧  Install CI Deps'
               run: npm ci
 
             - name: 'Check code formatting'
