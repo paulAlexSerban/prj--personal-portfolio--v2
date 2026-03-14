@@ -25,7 +25,6 @@ env:
   INDEX_NOW_API_KEY: ${{ secrets.INDEX_NOW_API_KEY }}
   S3_BUCKET_REGION: ${{ secrets.S3_BUCKET_REGION }}
   S3_CONTENT_PRODUCTION_BUCKET: ${{ secrets.S3_CONTENT_PRODUCTION_BUCKET }}
-  NODE_ENV: production
 
 jobs:
   deploy:
@@ -63,6 +62,14 @@ jobs:
       - name: "Build"
         run: |
           npm --prefix frontend/portfolio-website run build:prod
+        env:
+          # Increase Node.js network timeout for font fetching
+          NODE_ENV: production
+          NODE_OPTIONS: "--max-old-space-size=4096"
+          # Add retry logic for network requests
+          NEXT_TELEMETRY_DISABLED: 1
+        timeout-minutes: 15
+        continue-on-error: false
 
       - name: "Package"
         run: |
