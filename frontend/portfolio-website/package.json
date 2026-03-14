@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "develop": "next dev",
-    "build": "bash scripts/build.bash -e development",
+    "build": "next build",
     "build:prod": "bash scripts/build.bash -e production",
     "sitemap": "next-sitemap",
     "start": "npx serve@latest out",

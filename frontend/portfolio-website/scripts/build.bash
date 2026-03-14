@@ -65,17 +65,17 @@ else
 fi
 
 
-# init() {
-#   print_info "Initializing build process for $ENV environment"
-#   export GA_MEASUREMENT_ID
-#   export SITE_URL
-#   npm --prefix .. run build
-#   npm --prefix .. run sitemap
-#   node ../seo/indexnow
-#   # use awk to remove the line starting with Host
-#   awk '!/^Host/' ../out/robots.txt >../out/temp.txt
-#   # use mv to rename the file
-#   mv ../out/temp.txt ../out/robots.txt
-# }
+init() {
+  print_info "Initializing build process for $ENV environment"
+  export GA_MEASUREMENT_ID
+  export SITE_URL
+  npm --prefix .. run build
+  npm --prefix .. run sitemap
+  node ../seo/indexnow
+  # use awk to remove the line starting with Host
+  awk '!/^Host/' ../out/robots.txt >../out/temp.txt
+  # use mv to rename the file
+  mv ../out/temp.txt ../out/robots.txt
+}
 
 
