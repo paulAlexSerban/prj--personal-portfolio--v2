@@ -1,19 +1,13 @@
 {
-  "name": "prj--personal-portfolio",
-  "version": "1.17.0",
+  "name": "@prj--personal-portfolio/core",
+  "version": "1.18.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:unit": "echo \"Error: no unit-test specified\"",
-    "test:integration": "echo \"Error: no integration-test specified\"",
-    "lint": "echo \"Error: no lint specified\"",
     "lint:scripts": "shellcheck ./**/*.bash",
     "install:ci": "npm ci --omit=dev --ignore-scripts",
     "install:root": "npm install",
-    "prepare": "husky install",
-    "format:check": "echo \"Error: no format check specified\"",
-    "build": "echo \"Error: no build specified\"",
-    "package": "echo \"Error: no package specified\""
+    "prepare": "husky install"
   },
   "author": "Paul Serban",
   "license": "ISC",

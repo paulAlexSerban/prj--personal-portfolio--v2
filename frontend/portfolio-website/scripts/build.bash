@@ -1,5 +1,6 @@
 #!/bin/bash
 # makes sure the folder containing the script will be the root folder
+set -e
 cd "$(dirname "$0")" || exit
 
 while getopts ":e:" opt; do
