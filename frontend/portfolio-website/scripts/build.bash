@@ -29,25 +29,25 @@ print_info() {
 # if ../.env exists, load it
 if [[ -f ../.env ]]; then
   print_info "Loading environment variables from ../.env file"
-  export $(grep -v '^#' ../.env | xargs)
+  source ../.env
 else
   print_info "No ../.env file found, skipping loading environment variables from file"
 fi
 
 print_info 'Building... - should copy assets from ./assets/dist to public'
 
-function pullS3Content() {
+pullS3Content() {
   print_info "Pulling content from prod AWS S3 bucket to  ./content/prod folder, set cache TTL to 24h"
   node ../aws/pull-prod-content.js
 }
 
-function cleanDistFolder() {
+cleanDistFolder() {
   print_info "Cleaning ./content/dist folder"
   rm -rfv ../content/dist/*
   mkdir -p ../content/dist
 }
 
-function copyContent() {
+copyContent() {
   local arg1=$1
   print_info "Copying content from ./content/$arg1 to ./content/dist"
   cp -rfv ../content/$arg1/* ../content/dist/
@@ -64,12 +64,18 @@ else
   copyContent test
 fi
 
-export GA_MEASUREMENT_ID
-export SITE_URL
-npm --prefix .. run build
-npm --prefix .. run sitemap
-node ../seo/indexnow
-# use awk to remove the line starting with Host
-awk '!/^Host/' ../out/robots.txt >../out/temp.txt
-# use mv to rename the file
-mv ../out/temp.txt ../out/robots.txt
+
+# init() {
+#   print_info "Initializing build process for $ENV environment"
+#   export GA_MEASUREMENT_ID
+#   export SITE_URL
+#   npm --prefix .. run build
+#   npm --prefix .. run sitemap
+#   node ../seo/indexnow
+#   # use awk to remove the line starting with Host
+#   awk '!/^Host/' ../out/robots.txt >../out/temp.txt
+#   # use mv to rename the file
+#   mv ../out/temp.txt ../out/robots.txt
+# }
+
+
