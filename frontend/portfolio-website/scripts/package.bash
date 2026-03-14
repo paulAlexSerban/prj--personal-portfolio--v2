@@ -2,6 +2,7 @@
 # makes sure the folder containing the script will be the root folder
 cd "$(dirname "$0")" || exit
 
+NC='\033[0m' # No Color
 GREEN='\033[0;32m'
 
 print_info() {

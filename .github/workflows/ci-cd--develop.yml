@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - develop
+      - main
+      - releases/*
   pull_request:
     types: [synchronize]
   workflow_dispatch:
@@ -28,7 +30,7 @@ env:
 
 jobs:
   deploy:
-    name: "Deploy to DEVELOP"
+    name: "Deploy to GitHub Pages (Test/Stage)"
     runs-on: ubuntu-latest
 
     steps:
