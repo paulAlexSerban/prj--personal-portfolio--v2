@@ -24,9 +24,14 @@ concurrency:
 env:
   NODE_VERSION: 24.14.0
   FE_NEXTJS_PROJECT_ROOT: frontend/portfolio-website
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   SITE_URL: "https://prj--personal-portfolio.github.io/portfolio-website-v2"
   ASSETS_PATH: ${{ secrets.ASSETS_PATH }}
-  NODE_ENV: production
+  SITE_HOSTNAME: ${{ secrets.SITE_HOSTNAME }}
+  INDEX_NOW_API_KEY: ${{ secrets.INDEX_NOW_API_KEY }}
+  S3_BUCKET_REGION: ${{ secrets.S3_BUCKET_REGION }}
+  S3_CONTENT_PRODUCTION_BUCKET: ${{ secrets.S3_CONTENT_PRODUCTION_BUCKET }}
 
 jobs:
   deploy:
