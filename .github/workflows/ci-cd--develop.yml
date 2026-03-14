@@ -20,14 +20,10 @@ concurrency:
     cancel-in-progress: true
 
 env:
-    NODE_VERSION: 18.17.1
+    NODE_VERSION: 24.14.0
     FE_NEXTJS_PROJECT_ROOT: frontend/portfolio-website
-    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    S3_BUCKET_REGION: ${{ secrets.S3_BUCKET_REGION }}
-    SITE_URL: ${{ secrets.DEV_SITE_URL }}
+    SITE_URL: 'https://prj--personal-portfolio.github.io/portfolio-website-v2'
     ASSETS_PATH: ${{ secrets.ASSETS_PATH }}
-    S3_CONTENT_PRODUCTION_BUCKET: ${{ secrets.S3_CONTENT_PRODUCTION_BUCKET }}
     NODE_ENV: production
 
 jobs:
@@ -37,84 +33,42 @@ jobs:
 
         steps:
             - name: '📥  Checkout repository'
-              uses: actions/checkout@v3
+              uses: actions/checkout@v6
               with:
                   fetch-depth: 0
 
             - name: '🔍  Verify Changed Files'
-              uses: tj-actions/changed-files@v35
+              uses: tj-actions/changed-files@v47
               id: changed-frontend-portfolio-website-files
               with:
                   files: ${{ env.FE_NEXTJS_PROJECT_ROOT }}/**/*
 
-            - name: 'Check code scanning'
-              run: |
-                  echo \"Error: no code scanning checks implemented\"
-            # - name: "🚀 Initialize CodeQL"
-            #   uses: github/codeql-action/init@v2
-            #   with:
-            #       languages: ${{ matrix.language }}
-            # - name: "📥  Checkout repository"
-            #   uses: actions/checkout@v3
-            #   with:
-            #       fetch-depth: 0
-
-            # - name: "🏗️  Autobuild"
-            #   uses: github/codeql-action/autobuild@v2
-            # - name: Perform CodeQL Analysis
-            #   uses: github/codeql-action/analyze@v2
-
             - name: '🔄  Cache node_modules'
-              uses: actions/cache@v3
+              uses: actions/cache@v5
               with:
                   path: ~/.npm
                   key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
                   restore-keys: ${{ runner.os }}-node-
 
             - name: '🔧  Setup NodeJS ${{ env.NODE_VERSION }}'
-              uses: actions/setup-node@v3
+              uses: actions/setup-node@v6
               with:
                   node-version: ${{ env.NODE_VERSION }}
 
-            - name: '🔧 CI Deps'
-              run: npm ci
-
-            - name: 'Check code formatting'
-              run: |
-                  echo \"Error: no format check specified\"
-
             - name: '🔧  Install project modules dependencies'
               run: |
-                  bash modulize -e production -p install
-
-            - name: 'Check code linting'
-              run: |
-                  echo \"Error: no lint specified\"
-
-            - name: 'Run unit tests'
-              run: |
-                  echo \"Error: no unit-test specified\"
-
-            - name: 'Run integration tests'
-              run: |
-                  echo \"Error: no integration-test specified\"
+                npm --prefix frontend/portfolio-website install
 
             - name: 'Build'
-              run: bash modulize -e production -p build
+              run: |
+                npm --prefix frontend/portfolio-website run build
 
             - name: 'Package'
               run: |
-                  bash modulize -e production -p package
+                npm --prefix frontend/portfolio-website run package
 
-            - name: 'Configure AWS Credentials'
-              uses: aws-actions/configure-aws-credentials@v1
+            - name: Deploy to GitHub Pages
+              uses: peaceiris/actions-gh-pages@v4
               with:
-                  aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-                  aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-                  aws-region: ${{ secrets.S3_BUCKET_REGION }}
-
-            - name: 'Deploy  to bucket'
-              run: aws s3 sync ./package/prj--portfolio-website/ s3://${{ secrets.S3_DEVELOP_BUCKET }} --delete
-
-            - name: 'Invalidate  cloudfront'
-              run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DEVELOP_DISTRIBUTION_ID }} --paths "/"
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./package/prj--portfolio-website-v2
