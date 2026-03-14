@@ -64,7 +64,6 @@ jobs:
           npm --prefix frontend/portfolio-website run build:prod
         env:
           # Increase Node.js network timeout for font fetching
-          NODE_ENV: production
           NODE_OPTIONS: "--max-old-space-size=4096"
           # Add retry logic for network requests
           NEXT_TELEMETRY_DISABLED: 1
