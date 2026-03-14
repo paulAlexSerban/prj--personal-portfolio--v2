@@ -29,9 +29,6 @@ jobs:
         with:
           node-version: 14.19.1
 
-      - name: "🔧 Install npm@latest"
-        run: npm i -g npm@latest
-
       - name: "📦  Install CI dependencies"
         run: npm run install:ci
 

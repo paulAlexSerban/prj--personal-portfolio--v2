@@ -55,10 +55,6 @@ jobs:
         with:
           node-version: 14.19.1
 
-      - name: "🔧  Install npm@latest"
-        if: steps.changed-frontend-portfolio-website-files.outputs.any_changed == 'true'
-        run: npm i -g npm@latest
-
       - name: "📦  Install Frontend Portfolio Website Development dependencies"
         if: steps.changed-frontend-portfolio-website-files.outputs.any_changed == 'true'
         run: |

@@ -4,6 +4,7 @@ import { serialize } from 'next-mdx-remote/serialize';
 import { sanitizeQueryString } from '@/utils/TextUtils';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeAttr from 'rehype-attr';
+import remarkGfm from 'remark-gfm';
 
 const CONTENT_DIRECTORY = './content/dist';
 const TYPE_PATTERNS = /projects|coursework|posts|booknotes|snippets/;
@@ -81,6 +82,7 @@ class ContentRepository {
             return await serialize(markdownWithMeta, {
                 parseFrontmatter: true,
                 mdxOptions: {
+                    remarkPlugins: [remarkGfm],
                     rehypePlugins: [rehypeHighlight, rehypeAttr],
                 },
             });

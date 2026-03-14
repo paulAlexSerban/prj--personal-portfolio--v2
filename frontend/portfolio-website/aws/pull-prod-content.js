@@ -6,6 +6,7 @@ const { NODE_ENV } = process.env;
 
 NODE_ENV === 'development' && dotenv.config({ path: path.resolve(__dirname, '..', '..', '..', '.env') });
 
+dotenv.config({ path: path.resolve(__dirname, '..', '..', '..', '.env') });
 const REGION = process.env.S3_BUCKET_REGION;
 const BUCKET_NAME = process.env.S3_CONTENT_PRODUCTION_BUCKET;
 const LOCAL_DIRECTORY_PATH = path.resolve(__dirname, '..', 'content', 'prod');

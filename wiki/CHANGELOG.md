@@ -1,3 +1,15 @@
+# [1.18.0](https://github.com/paulAlexSerban/prj--personal-portfolio/compare/v1.17.0...v1.18.0) (2025-01-05)
+
+
+### Bug Fixes
+
+* small change ([84226a0](https://github.com/paulAlexSerban/prj--personal-portfolio/commit/84226a056dd4108691f4e47ff2f148ac3e980eb8))
+
+
+### Features
+
+* **tables:** adjusted tables rendering ([301a81b](https://github.com/paulAlexSerban/prj--personal-portfolio/commit/301a81bd454c809a45c9283228e86f2630f8288f))
+
 # [1.17.0](https://github.com/paulAlexSerban/prj--personal-portfolio/compare/v1.16.4...v1.17.0) (2024-01-30)
 
 

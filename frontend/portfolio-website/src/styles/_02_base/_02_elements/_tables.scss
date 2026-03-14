@@ -8,3 +8,22 @@
 table {
   width: 100%;
 }
+
+th, td {
+  @include font($body);
+
+  text-align: left;
+  border-bottom: 1px solid var(--brand-color);
+  padding: $baseline $gutter;
+}
+
+th {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+tr {
+  &:nth-of-type(odd) {
+    background: get-color($c-light, cultured);
+  }
+}
