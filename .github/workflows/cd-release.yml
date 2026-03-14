@@ -3,23 +3,23 @@ name: CD - Release
 on:
     push:
         branches:
-            - release
+            - releases/*
 
 jobs:
     release:
         name: Release
         runs-on: ubuntu-latest
         env:
-            NODE_VERSION: 18.17.1
-            SITE_URL: https://paulalexserban.github.io/prj--personal-portfolio
+            NODE_VERSION: v24.14.0
+            SITE_URL: https://paulalexserban.github.io/prj--personal-portfolio--v2
         steps:
             - name: '📥 checkout repository'
-              uses: actions/checkout@v3
+              uses: actions/checkout@v6
               with:
                   fetch-depth: 0
 
             - name: '🔄  Cache node_modules'
-              uses: actions/cache@v2
+              uses: actions/cache@v5
               with:
                   path: |
                       ~/.npm
@@ -28,7 +28,7 @@ jobs:
                       ${{ runner.os }}-node-
 
             - name: '🔧 Setup NodeJS ${{ env.NODE_VERSION }}'
-              uses: actions/setup-node@v1
+              uses: actions/setup-node@v6
               with:
                   node-version: ${{ env.NODE_VERSION }}
 
