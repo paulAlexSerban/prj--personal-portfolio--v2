@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "develop": "next dev",
-    "prebuild": "node scripts/prepare-content-dist.js",
     "build": "next build",
     "build:prod": "bash scripts/build.bash",
     "sitemap": "next-sitemap",
