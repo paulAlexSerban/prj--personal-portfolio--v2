@@ -16,14 +16,6 @@ fi
 
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-# if ../.env exists, load it
-if [[ -f ../.env ]]; then
-  print_info "Loading environment variables from ../.env file"
-  export $(grep -v '^#' ../.env | xargs)
-else
-  print_info "No ../.env file found, skipping loading environment variables from file"
-fi
-
 # Colors for printing messages
 NC='\033[0m' # No Color
 RED='\033[0;31m'
@@ -33,6 +25,14 @@ BLUE='\033[0;34m'
 print_info() {
   echo -e "${GREEN} [ info ] ${NC}" "$1"
 }
+
+# if ../.env exists, load it
+if [[ -f ../.env ]]; then
+  print_info "Loading environment variables from ../.env file"
+  export $(grep -v '^#' ../.env | xargs)
+else
+  print_info "No ../.env file found, skipping loading environment variables from file"
+fi
 
 print_info 'Building... - should copy assets from ./assets/dist to public'
 
