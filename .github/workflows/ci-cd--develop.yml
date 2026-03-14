@@ -71,7 +71,7 @@ jobs:
 
       - name: "Build"
         run: |
-          npm --prefix frontend/portfolio-website run build:prod 
+          npm --prefix frontend/portfolio-website run build
         env:
           # Increase Node.js network timeout for font fetching
           NODE_OPTIONS: "--max-old-space-size=4096"

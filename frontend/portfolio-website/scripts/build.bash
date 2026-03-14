@@ -16,8 +16,12 @@ fi
 
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-if [[ $ENV == 'development' ]]; then
-  source ../.env
+# if ../.env exists, load it
+if [[ -f ../.env ]]; then
+  print_info "Loading environment variables from ../.env file"
+  export $(grep -v '^#' ../.env | xargs)
+else
+  print_info "No ../.env file found, skipping loading environment variables from file"
 fi
 
 # Colors for printing messages
