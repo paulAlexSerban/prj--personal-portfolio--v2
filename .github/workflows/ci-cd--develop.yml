@@ -32,6 +32,7 @@ env:
   INDEX_NOW_API_KEY: ${{ secrets.INDEX_NOW_API_KEY }}
   S3_BUCKET_REGION: ${{ secrets.S3_BUCKET_REGION }}
   S3_CONTENT_PRODUCTION_BUCKET: ${{ secrets.S3_CONTENT_PRODUCTION_BUCKET }}
+  NODE_ENV: development
 
 jobs:
   deploy:
