@@ -4,14 +4,6 @@ import styles, { base, header, content } from '@/styles/molecules/cookieBanner.m
 import { Paragraph, Heading, Link } from '@/core/atoms/typography';
 import ButtonGroup from '@/core/molecules/ButtonGroup.molecule';
 import { Button } from '@/core/atoms/form';
-import { Roboto } from 'next/font/google';
-const roboto = Roboto({
-    display: 'swap',
-    subsets: ['latin'],
-    weight: ['400', '700', '900'],
-    style: ['normal'],
-    variable: '--text-regular',
-});
 
 const CookieBanner = () => {
     const [mounted, setMounted] = useState(false);
@@ -38,7 +30,7 @@ const CookieBanner = () => {
     }
 
     return (
-        <article className={[base, roboto.className, mounted ? '' : styles['base--hidden']].join(' ')}>
+        <article className={[base, mounted ? '' : styles['base--hidden']].join(' ')}>
             <header className={header}>
                 <Heading level={3}>This website is using cookies to improve your experience. </Heading>
             </header>
