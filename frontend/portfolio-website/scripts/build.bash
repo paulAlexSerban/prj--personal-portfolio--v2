@@ -53,7 +53,6 @@ copyContent() {
   cp -rfv ../content/$arg1/* ../content/dist/
 }
 
-export NODE_ENV=$ENV
 print_info "Building from $GIT_BRANCH branch"
 cleanDistFolder
 
