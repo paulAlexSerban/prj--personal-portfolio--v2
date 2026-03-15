@@ -26,7 +26,8 @@ env:
   FE_NEXTJS_PROJECT_ROOT: frontend/portfolio-website
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  SITE_URL: "https://prj--personal-portfolio.github.io/portfolio-website-v2"
+  SITE_URL: "https://paulalexserban.github.io/prj--personal-portfolio--v2"
+  NEXT_PUBLIC_BASE_PATH: "/prj--personal-portfolio--v2"
   ASSETS_PATH: ${{ secrets.ASSETS_PATH }}
   SITE_HOSTNAME: ${{ secrets.SITE_HOSTNAME }}
   INDEX_NOW_API_KEY: ${{ secrets.INDEX_NOW_API_KEY }}
