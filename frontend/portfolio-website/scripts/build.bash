@@ -3,13 +3,36 @@
 set -e
 cd "$(dirname "$0")" || exit
 
-while getopts ":node_env:pipeline_env:" opt; do
-  case $opt in
-  node_env) NODE_ENV="$OPTARG" ;;
-  pipeline_env) PIPELINE_ENV="$OPTARG" ;;
-  *) usage ;;
+usage() {
+  echo "Usage: bash scripts/build.bash -node_env <development|production> -pipeline_env <develop|production>"
+  exit 1
+}
+
+NODE_ENV_VALUE=""
+PIPELINE_ENV=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+  -node_env|--node_env)
+    NODE_ENV_VALUE="$2"
+    shift 2
+    ;;
+  -pipeline_env|--pipeline_env)
+    PIPELINE_ENV="$2"
+    shift 2
+    ;;
+  -h|--help)
+    usage
+    ;;
+  *)
+    usage
+    ;;
   esac
 done
+
+if [[ -z "$NODE_ENV_VALUE" || -z "$PIPELINE_ENV" ]]; then
+  usage
+fi
 
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
@@ -63,6 +86,7 @@ fi
 
 init() {
   print_info "Initializing build process for $PIPELINE_ENV environment"
+  export NODE_ENV="$NODE_ENV_VALUE"
   export GA_MEASUREMENT_ID
   export SITE_URL
   npm --prefix .. run build
@@ -73,5 +97,7 @@ init() {
   # use mv to rename the file
   mv ../out/temp.txt ../out/robots.txt
 }
+
+init
 
 
