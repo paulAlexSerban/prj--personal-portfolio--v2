@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import useSiteProps from '@/core/hooks/useSiteProps';
 import { PageProvider } from '@/core/context/PageContext';
 import usePageProps from '@/core/hooks/usePageProps';
-import content from '@/content/dist/pages/portfolio/index.json';
+import content from '@/content/dist/content/publish/pages/portfolio/index.json';
 import getInstance from '@/core/utils/ContentRepository';
 
 const GenericTemplate = dynamic(() => import('@/core/system/templates/Generic.template.js'));

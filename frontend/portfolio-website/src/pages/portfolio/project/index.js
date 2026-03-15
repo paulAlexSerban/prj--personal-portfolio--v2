@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import useSiteProps from "@/core/hooks/useSiteProps";
 import { PageProvider } from "@/core/context/PageContext";
 import usePageProps from "@/core/hooks/usePageProps";
-import content from "@/content/dist/pages/portfolio/project/index.json";
+import content from "@/content/dist/content/publish/pages/portfolio/project/index.json";
 import getInstance from '@/core/utils/ContentRepository';
 import { trimPageDescription } from "@/core/utils/TextUtils";
 

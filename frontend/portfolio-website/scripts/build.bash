@@ -62,26 +62,26 @@ pullS3Content() {
 }
 
 cleanDistFolder() {
-  print_info "Cleaning ./content/dist folder"
-  rm -rfv ../content/dist/*
-  mkdir -p ../content/dist
+  print_info "Cleaning ./content/dist/content/publish folder"
+  rm -rfv ../content/dist/content/publish/*
+  mkdir -p ../content/dist/content/publish
 }
 
 copyContent() {
   local arg1=$1
-  print_info "Copying content from ./content/$arg1 to ./content/dist"
-  cp -rfv ../content/$arg1/* ../content/dist/
+  print_info "Copying content from ./content/$arg1 to ./content/dist/content/publish"
+  cp -rfv ../content/$arg1/* ../content/dist/content/publish/
 }
 
 print_info "Building from $GIT_BRANCH branch"
-cleanDistFolder
+# cleanDistFolder
 
-if [[ "$PIPELINE_ENV" == 'production' ]]; then
-  pullS3Content
-  copyContent prod
-else
-  copyContent test
-fi
+# if [[ "$PIPELINE_ENV" == 'production' ]]; then
+#   pullS3Content
+#   copyContent prod
+# else
+#   copyContent test
+# fi
 
 
 init() {

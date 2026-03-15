@@ -6,7 +6,7 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeAttr from 'rehype-attr';
 import remarkGfm from 'remark-gfm';
 
-const CONTENT_DIRECTORY = './content/dist';
+const CONTENT_DIRECTORY = './content/dist/content/publish';
 const TYPE_PATTERNS = /projects|coursework|posts|booknotes|snippets/;
 
 class ContentRepository {
@@ -21,7 +21,7 @@ class ContentRepository {
     }
 
     async getPageJsonContent(jsonContentPath) {
-        return await import(`@/content/dist/pages/${jsonContentPath}index.json`);
+        return await import(`@/content/dist/content/publish/pages/${jsonContentPath}index.json`);
     }
 
     async setupContentFiles() {

@@ -6,7 +6,7 @@ const HeroBanner = dynamic(() => import('@/core/library/organisms/HeroBanner.org
 const Section = dynamic(() => import('@/core/library/organisms/Section.organism'));
 import { Paragraph, Heading } from '@/core/library/atoms/typography';
 import List from '@/core/library/atoms/List.atom';
-import content from '@/content/dist/pages/cookie_policy.json';
+import content from '@/content/dist/content/publish/pages/cookie_policy.json';
 import { PageProvider } from '@/core/context/PageContext';
 import usePageProps from '@/core/hooks/usePageProps';
 import BaseMeta from '@/core/system/meta/Base.meta';
