@@ -5,7 +5,8 @@
   "scripts": {
     "develop": "next dev",
     "build": "next build",
-    "build:prod": "bash scripts/build.bash -e production",
+    "build:dev": "bash scripts/build.bash -node_env development -pipeline_env develop",
+    "build:prod": "bash scripts/build.bash -node_env production -pipeline_env production",
     "sitemap": "next-sitemap",
     "start": "npx serve@latest out",
     "lint": "next lint",

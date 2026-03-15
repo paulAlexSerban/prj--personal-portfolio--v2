@@ -5,14 +5,11 @@ cd "$(dirname "$0")" || exit
 
 while getopts ":e:" opt; do
   case $opt in
-  e) ENV="$OPTARG" ;;
+  node_env) NODE_ENV="$OPTARG" ;;
+  pipeline_env) PIPELINE_ENV="$OPTARG" ;;
   *) usage ;;
   esac
 done
-
-if [[ -z $ENV ]]; then
-  ENV=development
-fi
 
 GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
@@ -56,7 +53,7 @@ copyContent() {
 print_info "Building from $GIT_BRANCH branch"
 cleanDistFolder
 
-if [[ "$NODE_ENV" == 'production' ]]; then
+if [[ "$PIPELINE_ENV" == 'production' ]]; then
   pullS3Content
   copyContent prod
 else
@@ -65,7 +62,7 @@ fi
 
 
 init() {
-  print_info "Initializing build process for $ENV environment"
+  print_info "Initializing build process for $PIPELINE_ENV environment"
   export GA_MEASUREMENT_ID
   export SITE_URL
   npm --prefix .. run build
