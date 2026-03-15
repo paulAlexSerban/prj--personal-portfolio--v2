@@ -3,7 +3,7 @@
 set -e
 cd "$(dirname "$0")" || exit
 
-while getopts ":e:" opt; do
+while getopts ":node_env:pipeline_env:" opt; do
   case $opt in
   node_env) NODE_ENV="$OPTARG" ;;
   pipeline_env) PIPELINE_ENV="$OPTARG" ;;
