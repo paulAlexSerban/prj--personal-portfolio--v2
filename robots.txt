@@ -5,4 +5,4 @@ Allow: /
 # Host
 
 # Sitemaps
-Sitemap: https://prj--personal-portfolio.github.io/portfolio-website-v2/sitemap.xml
+Sitemap: https://paulalexserban.github.io/prj--personal-portfolio--v2/sitemap.xml
