@@ -1,3 +1,10 @@
+## [1.19.4](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.19.3...v1.19.4) (2026-03-16)
+
+
+### Bug Fixes
+
+* add env vars to ci ([8c8d826](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/commit/8c8d826f6ddd45e0c6f5c1fa6f28db1aa90b86ee))
+
 ## [1.19.3](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.19.2...v1.19.3) (2026-03-16)
 
 
