@@ -25,6 +25,7 @@
 }
 
 :root {
+    --text-regular: #{$font-family-roboto};
     --text-color: #{get-color($c-dark, eerie-black)};
     --brand-color: #{get-color($c-gray, davys-grey)};
     --color-link: #{get-color($c-dark, eerie-black)};

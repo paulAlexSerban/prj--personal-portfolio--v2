@@ -1,6 +1,6 @@
 module.exports = {
-  branches: "release",
-  repositoryUrl: "https://github.com/paulAlexSerban/prj--personal-portfolio",
+  branches: "releases/*",
+  repositoryUrl: "https://github.com/paulAlexSerban/prj--personal-portfolio--v2",
   plugins: [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",

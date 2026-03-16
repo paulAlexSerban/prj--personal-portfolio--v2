@@ -11,6 +11,8 @@ const withMDX = require('@next/mdx')({
     },
 });
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+const assetPrefix = basePath || undefined;
 
 /** @type {import('next').NextConfig} */
 
@@ -25,6 +27,8 @@ const nextConfig = {
         dirs: ['.'],
     },
     output: 'export',
+    basePath,
+    assetPrefix,
     // Optional: Add a trailing slash to all paths `/about` -> `/about/`
     // It is needed for AWS S3 static hosting to support clean URLs (instead of example.com/about.html it will be example.com/about/)
     // IDEA POST: How to fix AWS S3 static hosting to support clean URLs (instead of example.com/about.html it will be example.com/about/)

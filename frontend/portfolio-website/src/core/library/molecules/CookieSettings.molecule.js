@@ -4,14 +4,6 @@ import { base, header, content } from '@/styles/molecules/cookieSettings.module.
 import { Paragraph, Heading, Link } from '@/core/atoms/typography';
 import { Button, Checkbox, Fieldset } from '@/core/atoms/form';
 import RichText from './RichText.molecule';
-import { Roboto } from 'next/font/google';
-const roboto = Roboto({
-    display: 'swap',
-    subsets: ['latin'],
-    weight: ['400', '700', '900'],
-    style: ['normal'],
-    variable: '--text-regular',
-});
 
 const CookieSettings = () => {
     const { cookieSettings, saveSettings, cookieSettingsVisible } = useContext(CookieContext);
@@ -33,7 +25,7 @@ const CookieSettings = () => {
     };
 
     return (
-        <div className={[base, roboto.className].join(' ')}>
+        <div className={base}>
             <header className={header}>
                 <Heading level="2">Cookie Settings</Heading>
             </header>
