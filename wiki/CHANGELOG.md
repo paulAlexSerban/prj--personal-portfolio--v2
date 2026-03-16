@@ -1,3 +1,17 @@
+# [1.19.0](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.18.0...v1.19.0) (2026-03-16)
+
+
+### Bug Fixes
+
+* **ci-cd--production.yml:** remove npm install latest ([f61b5c9](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/commit/f61b5c92bfcc0a403b43e242a890e32b05ef8c24))
+* missing content ([61da707](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/commit/61da707080945c404adb6960b86160fca4217505))
+* paths ([7edaa77](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/commit/7edaa776337b3e346809633298faca4a11b66c87))
+
+
+### Features
+
+* add set -e ([9d76413](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/commit/9d76413f3f6e5dbae6dc957ab8d9e40ba4b99d9e))
+
 # [1.18.0](https://github.com/paulAlexSerban/prj--personal-portfolio/compare/v1.17.0...v1.18.0) (2025-01-05)
 
 
