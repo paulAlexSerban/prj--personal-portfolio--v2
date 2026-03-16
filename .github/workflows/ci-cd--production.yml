@@ -79,7 +79,7 @@ jobs:
           aws-region: ${{ secrets.S3_BUCKET_REGION }}
 
       - name: "Deploy  to bucket"
-        run: aws s3 sync ./package/prj--portfolio-website/ s3://${{ secrets.S3_PRODUCTION_BUCKET }} --delete
+        run: aws s3 sync ./package/portfolio-website/ s3://${{ secrets.S3_PRODUCTION_BUCKET }} --delete
 
       - name: "Invalidate  cloudfront"
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_PRODUCTION_DISTRIBUTION_ID }} --paths "/"
