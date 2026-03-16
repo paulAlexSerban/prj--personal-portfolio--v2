@@ -4,8 +4,10 @@ const path = require("path");
 const fs = require("fs");
 const dotendv = require("dotenv");
 
+const CONTENT_REPO_DIRECTORY = "frontend/portfolio-website/content/repo";
+
 dotendv.config();
-const { GITHUB_TOKEN, CONTENT_REPO_GIT_URL, CONTENT_REPO_DIRECTORY } = process.env;
+const { GITHUB_TOKEN, CONTENT_REPO_GIT_URL } = process.env;
 
 function cleanRepoDir(targetDir) {
   try {
@@ -48,7 +50,18 @@ function main() {
     logger.error("CONTENT_REPO_GIT_URL is not set in environment variables.");
     process.exit(1);
   }
-  const TARGET_DIR = path.resolve(CONTENT_REPO_DIRECTORY);
+  const resolvedContentRepoDirectory =
+    typeof CONTENT_REPO_DIRECTORY === "string" && CONTENT_REPO_DIRECTORY.trim()
+      ? CONTENT_REPO_DIRECTORY.trim()
+      : DEFAULT_CONTENT_REPO_DIRECTORY;
+
+  if (!CONTENT_REPO_DIRECTORY) {
+    logger.info(
+      `CONTENT_REPO_DIRECTORY is not set. Using default: ${DEFAULT_CONTENT_REPO_DIRECTORY}`,
+    );
+  }
+
+  const TARGET_DIR = path.resolve(resolvedContentRepoDirectory);
   cleanRepoDir(TARGET_DIR);
   clonePrivateRepo(CONTENT_REPO_GIT_URL, TARGET_DIR, GITHUB_TOKEN);
   // Remove the .git directory to avoid issues with nested git repositories 
