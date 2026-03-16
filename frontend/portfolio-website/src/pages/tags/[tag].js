@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import useSiteProps from '@/core/hooks/useSiteProps';
 import { PageProvider } from '@/core/context/PageContext';
 import usePageProps from '@/core/hooks/usePageProps';
-import content from '@/content/dist/content/publish/pages/tags/[tag].json';
+import content from '@/content/dist/pages/tags/[tag].json';
 
 import getInstance from '@/core/utils/ContentRepository';
 

@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { encodeToBase64 } from "@/core/utils/TextUtils";
-import content from "@/content/dist/content/publish/siteProps.json";
+import content from "@/content/dist/siteProps.json";
 
 export const SitePropsContext = createContext(null);
 export function SitePropsProvider({ children }) {
