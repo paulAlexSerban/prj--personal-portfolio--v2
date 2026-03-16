@@ -26,7 +26,6 @@ env:
   S3_BUCKET_REGION: ${{ secrets.S3_BUCKET_REGION }}
   S3_CONTENT_PRODUCTION_BUCKET: ${{ secrets.S3_CONTENT_PRODUCTION_BUCKET }}
   NODE_ENV: production
-  PIPELINE_ENV: production
 
 jobs:
   deploy:
@@ -57,24 +56,20 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: "🔧  Install project modules dependencies"
+      - name: '🔧 CI Deps'
+        run: npm ci
+
+      - name: "🔧  Install PROJECT dependencies"
         run: |
           npm --prefix frontend/portfolio-website install
 
       - name: "Build"
         run: |
-          npm --prefix frontend/portfolio-website run build:prod
-        env:
-          # Increase Node.js network timeout for font fetching
-          NODE_OPTIONS: "--max-old-space-size=4096"
-          # Add retry logic for network requests
-          NEXT_TELEMETRY_DISABLED: 1
-        timeout-minutes: 15
-        continue-on-error: false
+          node scripts/build.js --env=prod --target-hosting=prod --dataset=live
 
       - name: "Package"
         run: |
-          npm --prefix frontend/portfolio-website run package
+          node scripts/package.js
 
       - name: "Configure AWS Credentials"
         uses: aws-actions/configure-aws-credentials@v1
