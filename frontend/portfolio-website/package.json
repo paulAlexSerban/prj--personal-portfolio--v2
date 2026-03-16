@@ -5,9 +5,6 @@
   "scripts": {
     "develop": "next dev",
     "build": "next build",
-    "build:dev": "bash scripts/build.bash -node_env dev -target_hosting test -dataset test",
-    "build:stg": "bash scripts/build.bash -node_env staging -target_hosting staging -dataset preview",
-    "build:prod": "bash scripts/build.bash -node_env prod -target_hosting prod -dataset prod",
     "sitemap": "next-sitemap",
     "start": "npx serve@latest out",
     "lint": "next lint",

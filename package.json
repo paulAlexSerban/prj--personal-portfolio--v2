@@ -7,7 +7,11 @@
     "lint:scripts": "shellcheck ./**/*.bash",
     "install:ci": "npm ci --omit=dev --ignore-scripts",
     "install:root": "npm install",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "build:prod:test:live": "node scripts/build.js --env=prod --target-hosting=test --dataset=live",
+    "build:prod:test:test": "node scripts/build.js --env=prod --target-hosting=production --dataset=live",
+    "build:prod:test:preview": "node scripts/build.js --env=prod --target-hosting=test --dataset=preview",
+    "serve:portfolio-website": "npx serve@latest ./package/portfolio-website/out"
   },
   "author": "Paul Serban",
   "license": "ISC",
