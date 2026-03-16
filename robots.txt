@@ -1,8 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-
-# Sitemaps
-Sitemap: https://paulalexserban.github.io/prj--personal-portfolio--v2/sitemap.xml
