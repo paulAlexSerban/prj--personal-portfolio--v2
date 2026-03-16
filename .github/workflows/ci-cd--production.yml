@@ -27,6 +27,8 @@ env:
   S3_CONTENT_PRODUCTION_BUCKET: ${{ secrets.S3_CONTENT_PRODUCTION_BUCKET }}
   NODE_ENV: production
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  CONTENT_REPO_GIT_URL: ${{ secrets.CONTENT_REPO_GIT_URL }}
+  
 
 jobs:
   deploy:
