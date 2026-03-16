@@ -1,3 +1,10 @@
+## [1.19.1](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.19.0...v1.19.1) (2026-03-16)
+
+
+### Bug Fixes
+
+* **ci:** missing github token ([a6b4e2a](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/commit/a6b4e2ad600b35c334a620cadcdba1b13d3a8f88))
+
 # [1.19.0](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.18.0...v1.19.0) (2026-03-16)
 
 
