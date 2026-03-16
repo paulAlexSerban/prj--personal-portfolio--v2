@@ -133,5 +133,5 @@ yarn-error.log*
 # vercel
 .vercel
 public
-./package
+package/*
 frontend/**/content/prod
