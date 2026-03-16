@@ -1,3 +1,10 @@
+## [1.19.2](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.19.1...v1.19.2) (2026-03-16)
+
+
+### Bug Fixes
+
+* **env var:** update ([560d7a8](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/commit/560d7a80122b17ed7c1ffeec62b6532267019556))
+
 ## [1.19.1](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.19.0...v1.19.1) (2026-03-16)
 
 
