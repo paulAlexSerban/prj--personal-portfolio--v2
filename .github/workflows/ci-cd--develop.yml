@@ -34,6 +34,7 @@ env:
   S3_BUCKET_REGION: ${{ secrets.S3_BUCKET_REGION }}
   S3_CONTENT_PRODUCTION_BUCKET: ${{ secrets.S3_CONTENT_PRODUCTION_BUCKET }}
   NODE_ENV: production
+  GITHUB_TOKEN: ${{ secrets.CONTENT_REPO_TOKEN }}
 
 jobs:
   deploy:
