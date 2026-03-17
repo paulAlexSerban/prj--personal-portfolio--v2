@@ -159,7 +159,8 @@ export async function getStaticProps({ params: { tag, name } }) {
     content.main.section__snippets.content[1].children[0].content.list = snippetsFrontmatter.slice(0, 9);
     content.main.section__posts.content[1].children[0].content.list = postsFrontmatter.slice(0, 9);
 
-    const assetsPath = process.env.ASSETS_PATH;
+    // @TODO: should implement better assets hosting strategy and not rely on env variables in the page components
+    const assetsPath = process.env.ASSETS_PATH ?? null;
     // console.log({ assetsPath });
     content.assetsPath = assetsPath;
 
