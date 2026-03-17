@@ -1,3 +1,10 @@
+## [1.19.5](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.19.4...v1.19.5) (2026-03-17)
+
+
+### Bug Fixes
+
+* **env vars:** adjust asset logic ([aaf9874](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/commit/aaf987426af224f225333b1c5c5f4d3c3b17c5c2))
+
 ## [1.19.4](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.19.3...v1.19.4) (2026-03-16)
 
 
