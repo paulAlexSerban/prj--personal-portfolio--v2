@@ -16,4 +16,8 @@ a {
 
     color: var(--color-link);
     outline-offset: 4px;
+
+    strong & {
+        @include font($body-bold);
+    }
 }

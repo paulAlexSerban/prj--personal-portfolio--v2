@@ -1,0 +1,17 @@
+@import '../../_00_abstracts/abstracts.scss';
+$breakpoints: $column-grid-12;
+$useModules: true;
+
+/* ------------------------------------ *\
+ * SECTION HEADING ATOM
+\* ------------------------------------ */
+
+.imageResponsive {
+    @include e('base') {
+        grid-column: span 12;
+
+        @include breakpoint($tablet) {
+            grid-column: span 8;
+        }
+    }
+}

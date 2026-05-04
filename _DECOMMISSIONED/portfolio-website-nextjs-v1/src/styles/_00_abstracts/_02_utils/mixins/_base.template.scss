@@ -1,8 +1,0 @@
-@mixin baseTemplate() {
-    max-width: 100%;
-    margin-top: var(--header-height-default);
-
-    > * + * {
-        margin-block-start: var(--responsive-spacing-3);
-    }
-}

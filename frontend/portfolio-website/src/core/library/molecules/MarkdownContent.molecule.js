@@ -4,6 +4,7 @@ import { MDXRemote } from "next-mdx-remote";
 import { Paragraph, Heading, Link } from "@/core/atoms/typography";
 import LinkList from "@/core/library/molecules/LinkList.molecule";
 import ImageSvg from "@/core/library/atoms/ImageSvg.atom";
+import ImageResponsive from "@/core/library/atoms/ImageResponsive.atom";
 
 export default function MarkdownContainer({ markdownContent, articleId }) {
     const ID = useId();
@@ -16,7 +17,8 @@ export default function MarkdownContainer({ markdownContent, articleId }) {
         Heading,
         Link,
         LinkList,
-        ImageSvg
+        ImageSvg,
+        ImageResponsive,
     };
 
     return (
