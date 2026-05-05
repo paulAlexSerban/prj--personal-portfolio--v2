@@ -8,10 +8,10 @@
     "install:ci": "npm ci --omit=dev --ignore-scripts",
     "install:root": "npm install",
     "prepare": "husky install",
-    "build:prod:test:live": "node scripts/build.js --env=prod --target-hosting=test --dataset=live",
-    "build:prod:test:test": "node scripts/build.js --env=prod --target-hosting=test --dataset=live",
-    "build:prod:test:preview": "node scripts/build.js --env=prod --target-hosting=test --dataset=preview",
-    "serve:portfolio-website": "npx serve@latest ./frontend/portfolio-website/out"
+    "build:live": "node scripts/build.js --env=prod --target-hosting=test --dataset=live",
+    "build:test": "node scripts/build.js --env=prod --target-hosting=test --dataset=live",
+    "build:preview": "node scripts/build.js --env=prod --target-hosting=test --dataset=preview",
+    "serve": "npx serve@latest ./frontend/portfolio-website/out"
   },
   "author": "Paul Serban",
   "license": "ISC",
