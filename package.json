@@ -9,7 +9,7 @@
     "install:root": "npm install",
     "prepare": "husky install",
     "build:live": "node scripts/build.js --env=prod --target-hosting=test --dataset=live",
-    "build:test": "node scripts/build.js --env=prod --target-hosting=test --dataset=live",
+    "build:test": "node scripts/build.js --env=prod --target-hosting=test --dataset=test",
     "build:preview": "node scripts/build.js --env=prod --target-hosting=test --dataset=preview",
     "serve": "npx serve@latest ./frontend/portfolio-website/out"
   },
@@ -28,7 +28,6 @@
     "cz-conventional-changelog": "^3.3.0",
     "dotenv": "^16.3.1",
     "gh-pages": "^5.0.0",
-    "gulp": "^4.0.2",
     "husky": "^8.0.3",
     "semantic-release": "^19.0.2"
   },
