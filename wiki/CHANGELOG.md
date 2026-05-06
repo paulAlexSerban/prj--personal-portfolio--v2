@@ -1,3 +1,11 @@
+# [1.20.0](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.19.5...v1.20.0) (2026-05-05)
+
+
+### Features
+
+* adjust image responsive ([0d24bc5](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/commit/0d24bc5a37a09d76863414688022643c5a40280d))
+* imageResponsive imleentation ([1983668](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/commit/1983668385ea10d96e658644cc06aaa584d0cca6))
+
 ## [1.19.5](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.19.4...v1.19.5) (2026-03-17)
 
 
