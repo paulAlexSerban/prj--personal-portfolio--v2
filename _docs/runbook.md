@@ -23,6 +23,3 @@
     -   DOMAIN=https://test.paulserban.eu/
 -   id aws (develop) - set .env:
     -   DOMAIN=https://develop.paulserban.eu/
-
-## NOTES
-- before running `bash modulize.bash -e dev -p develop` RUN `bash modulize.bash -e dev -p build` sync content accordingly
