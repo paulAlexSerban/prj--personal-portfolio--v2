@@ -1,3 +1,10 @@
+# [1.21.0](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.20.0...v1.21.0) (2026-05-06)
+
+
+### Features
+
+* cleanup ([00acffb](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/commit/00acffb8e5aa5d7c1a2699a2c0b3a979ea136120))
+
 # [1.20.0](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.19.5...v1.20.0) (2026-05-05)
 
 
