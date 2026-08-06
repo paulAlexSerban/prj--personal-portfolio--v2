@@ -1,0 +1,25 @@
+@import '../../_00_abstracts/abstracts.scss';
+$breakpoints: $column-grid-12;
+$useModules: true;
+$block: 'imageResponsive';
+
+/* ------------------------------------ *\
+ * IMAGE RESPONSIVE ATOM
+\* ------------------------------------ */
+
+.#{$block} {
+    @include e('base') {
+        grid-column: span 12;
+
+        @include breakpoint($tablet) {
+            grid-column: span 8;
+        }
+
+        picture,
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+}
