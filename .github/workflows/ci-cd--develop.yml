@@ -24,15 +24,14 @@ concurrency:
 env:
   NODE_VERSION: 24.14.0
   FE_NEXTJS_PROJECT_ROOT: frontend/portfolio-website
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   NEXT_PUBLIC_BASE_PATH: "/prj--personal-portfolio--v2"
   ASSETS_PATH: ${{ secrets.ASSETS_PATH }}
   SITE_URL: "https://paulalexserban.github.io/prj--personal-portfolio--v2"
   SITE_HOSTNAME: "paulalexserban.github.io"
   INDEX_NOW_API_KEY: ${{ secrets.INDEX_NOW_API_KEY }}
-  S3_BUCKET_REGION: ${{ secrets.S3_BUCKET_REGION }}
-  S3_CONTENT_PRODUCTION_BUCKET: ${{ secrets.S3_CONTENT_PRODUCTION_BUCKET }}
+  CONTENT_REPO_GIT_URL: "https://github.com/paulAlexSerban/content--paulserban.eu.git"
+  CONTENT_REPO_DIRECTORY: "frontend/portfolio-website/content/repo"
+  CONTENT_REPO_TOKEN: ${{ secrets.CONTENT_REPO_TOKEN }}
   NODE_ENV: production
 
 jobs:
@@ -73,7 +72,7 @@ jobs:
 
       - name: "Build"
         run: |
-          node scripts/build.js --env=prod --target-hosting=test --dataset=test
+          node scripts/build.js --env=prod --target-hosting=test --dataset=live
 
       - name: "Package"
         run: |
