@@ -4,7 +4,6 @@ const path = require("path");
 const fs = require("fs");
 const dotendv = require("dotenv");
 
-const CONTENT_REPO_DIRECTORY = "frontend/portfolio-website/content/repo";
 
 dotendv.config();
 const { CONTENT_REPO_TOKEN, GITHUB_TOKEN, CONTENT_REPO_GIT_URL, CONTENT_REPO_DIRECTORY } =
