@@ -18,6 +18,11 @@ function PortfolioPage() {
     const { title, excerpt, main, assetsPath, tags, robots, author, image, url, type, site_name, locale } = pageContent;
     const { icons, socialMediaLinks } = useSiteProps();
 
+    const projectsContent = main.section__myProjects.content[1].children[0].content;
+    const projectsContentList = projectsContent.list || [];
+    const courseworkContent = main.section__coursework.content[1].children[0].content;
+    const courseworkContentList = courseworkContent.list || [];
+
     return (
         <>
             <BaseMeta
@@ -51,26 +56,28 @@ function PortfolioPage() {
                     subheading={main.heroBanner.content[1].subheading}
                     socialMediaLinks={socialMediaLinks}
                 />
-                <Section
-                    headingTitle={main.section__myProjects.content[0].title.main}
-                    hasSeparator={true}
-                    subheadingText={main.section__myProjects.content[0].title.sub}
-                >
-                    <PostsOverview
-                        content={main.section__myProjects.content[1].children[0].content}
-                        showViewAllButton={true}
-                    />
-                </Section>
-                <Section
-                    headingTitle={main.section__coursework.content[0].title.main}
-                    hasSeparator={true}
-                    subheadingText={main.section__coursework.content[0].title.sub}
-                >
-                    <PostsOverview
-                        content={main.section__coursework.content[1].children[0].content}
-                        showViewAllButton={true}
-                    />
-                </Section>
+                {projectsContentList.length > 0 && (
+                    <Section
+                        headingTitle={main.section__myProjects.content[0].title.main}
+                        hasSeparator={true}
+                        subheadingText={main.section__myProjects.content[0].title.sub}
+                    >
+                        <PostsOverview
+                            content={projectsContent}
+                            showViewAllButton={true}
+                        />
+                    </Section>)}
+                {courseworkContentList.length > 0 && (
+                    <Section
+                        headingTitle={main.section__coursework.content[0].title.main}
+                        hasSeparator={true}
+                        subheadingText={main.section__coursework.content[0].title.sub}
+                    >
+                        <PostsOverview
+                            content={courseworkContent}
+                            showViewAllButton={true}
+                        />
+                    </Section>)}
             </GenericTemplate>
         </>
     );

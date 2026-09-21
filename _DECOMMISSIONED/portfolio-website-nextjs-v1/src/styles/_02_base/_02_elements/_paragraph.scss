@@ -1,9 +1,0 @@
-p {
-    @include font($body);
-
-    color: var(--text-color);
-
-    &.indent-block {
-        padding-inline: var(--lateral-padding);
-    }
-}

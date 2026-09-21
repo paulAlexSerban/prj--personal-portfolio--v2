@@ -5,7 +5,7 @@
 DEMO: https://paulalexserban.github.io/prj--personal-portfolio--v2/
 
 ## Prerequisites
-- `node` - v24.14.0
+- `node` - v24.15.0
 - `nvm install` - use NVM to install the correct version of node defined in `.nvmrc`
 - `npm install` - use NPM to install all dependencies
 - `npm install -g commitizen` - needed in order to commit changes using `git cz`

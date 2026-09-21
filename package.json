@@ -1,6 +1,6 @@
 {
   "name": "@prj--personal-portfolio/core",
-  "version": "1.19.0",
+  "version": "1.23.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,10 +8,10 @@
     "install:ci": "npm ci --omit=dev --ignore-scripts",
     "install:root": "npm install",
     "prepare": "husky install",
-    "build:prod:test:live": "node scripts/build.js --env=prod --target-hosting=test --dataset=live",
-    "build:prod:test:test": "node scripts/build.js --env=prod --target-hosting=production --dataset=live",
-    "build:prod:test:preview": "node scripts/build.js --env=prod --target-hosting=test --dataset=preview",
-    "serve:portfolio-website": "npx serve@latest ./package/portfolio-website/out"
+    "build:live": "node scripts/build.js --env=prod --target-hosting=test --dataset=live",
+    "build:test": "node scripts/build.js --env=prod --target-hosting=test --dataset=test",
+    "build:preview": "node scripts/build.js --env=prod --target-hosting=test --dataset=prev",
+    "serve": "npx serve@latest ./frontend/portfolio-website/out"
   },
   "author": "Paul Serban",
   "license": "ISC",
@@ -28,7 +28,6 @@
     "cz-conventional-changelog": "^3.3.0",
     "dotenv": "^16.3.1",
     "gh-pages": "^5.0.0",
-    "gulp": "^4.0.2",
     "husky": "^8.0.3",
     "semantic-release": "^19.0.2"
   },
