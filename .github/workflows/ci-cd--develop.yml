@@ -29,7 +29,6 @@ env:
   SITE_URL: "https://paulalexserban.github.io/prj--personal-portfolio--v2"
   SITE_HOSTNAME: "paulalexserban.github.io"
   INDEX_NOW_API_KEY: ${{ secrets.INDEX_NOW_API_KEY }}
-  CONTENT_REPO_GIT_URL: "https://github.com/paulAlexSerban/content--paulserban.eu.git"
   CONTENT_REPO_DIRECTORY: "frontend/portfolio-website/content/repo"
   CONTENT_REPO_TOKEN: ${{ secrets.CONTENT_REPO_TOKEN }}
   NODE_ENV: production
