@@ -10,7 +10,7 @@
     "prepare": "husky install",
     "build:live": "node scripts/build.js --env=prod --target-hosting=test --dataset=live",
     "build:test": "node scripts/build.js --env=prod --target-hosting=test --dataset=test",
-    "build:preview": "node scripts/build.js --env=prod --target-hosting=test --dataset=preview",
+    "build:preview": "node scripts/build.js --env=prod --target-hosting=test --dataset=prev",
     "serve": "npx serve@latest ./frontend/portfolio-website/out"
   },
   "author": "Paul Serban",

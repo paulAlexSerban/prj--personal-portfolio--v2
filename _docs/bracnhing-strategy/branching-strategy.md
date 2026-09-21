@@ -60,7 +60,7 @@ RUN `$ git commit -a -m "Bumped version number to 1.2"`
 
 After creating a new branch and switching to it, we bump the version number.
 Here, `bump-version.sh` is a fictional shell script that changes some files in the working copy to reflect the new version.
-(This can of course be a manual change—the point being that some files change.) Then, the bumped version number is committed.
+(This can of course be a manual change-the point being that some files change.) Then, the bumped version number is committed.
 This new branch may exist there for a while, until the release may be rolled out definitely. During that time, bug fixes may be applied in this branch (rather than on the develop branch).
 
 > NOTE
