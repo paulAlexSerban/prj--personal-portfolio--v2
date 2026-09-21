@@ -7,7 +7,34 @@ import rehypeAttr from 'rehype-attr';
 import remarkGfm from 'remark-gfm';
 
 const CONTENT_DIRECTORY = './content/dist';
-const TYPE_PATTERNS = /projects|coursework|posts|booknotes|snippets/;
+const TYPE_PATTERNS = /^(projects|coursework|posts|booknotes|snippets)$/;
+const EXCLUDED_CONTENT_SUBDIRS = new Set(['questions', 'cheat_sheet', 'learning_plan', 'intermediary']);
+
+/**
+ * Recursively collect MDX content files.
+ * Accepts:
+ * - Flat layout (fixtures): {type}/{slug}.mdx when isTypeRoot
+ * - Nested layout (live): {YYYY}/{MM}/{slug}/{slug}.mdx (basename matches parent dir)
+ * Skips companion folders: questions, cheat_sheet, learning_plan, intermediary
+ */
+async function collectMdxFiles(dirPath, isTypeRoot) {
+    const entries = await fsPromises.readdir(dirPath, { withFileTypes: true });
+    const dirName = path.basename(dirPath);
+    const files = [];
+
+    for (const entry of entries) {
+        if (entry.isFile() && entry.name.endsWith('.mdx')) {
+            const slug = entry.name.replace(/\.mdx$/, '');
+            if (isTypeRoot || slug === dirName) {
+                files.push({ dir: dirPath, filename: entry.name });
+            }
+        } else if (entry.isDirectory() && !EXCLUDED_CONTENT_SUBDIRS.has(entry.name)) {
+            files.push(...(await collectMdxFiles(path.join(dirPath, entry.name), false)));
+        }
+    }
+
+    return files;
+}
 
 class ContentRepository {
     constructor(jsonContentPath = '') {
@@ -30,21 +57,18 @@ class ContentRepository {
 
             const filteredItems = contentItems.filter((item) => item.isDirectory() && TYPE_PATTERNS.test(item.name));
 
-            // Use Promise.all to read all directories in parallel
             return await Promise.all(
                 filteredItems.map(async (item) => {
                     const itemPath = path.resolve(CONTENT_DIRECTORY, item.name);
-                    const itemFiles = await fsPromises.readdir(itemPath);
+                    const entries = await collectMdxFiles(itemPath, true);
                     return {
                         typeName: item.name,
-                        path: itemPath,
-                        files: itemFiles,
+                        entries,
                     };
                 })
             );
         } catch (err) {
             console.error(err);
-            // You might want to re-throw the error or handle it in another way
             throw err;
         }
     }
@@ -52,23 +76,21 @@ class ContentRepository {
     async setupParsedContent() {
         const parsedContent = {};
         for (const item of this.contentFiles) {
-            const { typeName, path, files } = item;
+            const { typeName, entries } = item;
             parsedContent[typeName] = [];
 
-            for (const filename of files) {
-                if (!filename.endsWith('.mdx')) {
-                    continue;
-                }
-                const slug = filename.replace('.mdx', '');
-                const content = await this.getContent(`${path}/${filename}`);
+            for (const { dir, filename } of entries) {
+                const slug = filename.replace(/\.mdx$/, '');
+                const fullPath = path.join(dir, filename);
+                const content = await this.getContent(fullPath);
                 content.frontmatter.slug = slug;
                 parsedContent[typeName].push({
                     slug,
-                    path: path,
-                    filename: filename,
-                    fullPath: `${path}/${filename}`,
-                    typeName: typeName,
-                    content: content,
+                    path: dir,
+                    filename,
+                    fullPath,
+                    typeName,
+                    content,
                 });
             }
         }

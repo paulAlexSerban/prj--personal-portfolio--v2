@@ -5,6 +5,7 @@ import { Paragraph, Heading, Link } from "@/core/atoms/typography";
 import LinkList from "@/core/library/molecules/LinkList.molecule";
 import ImageSvg from "@/core/library/atoms/ImageSvg.atom";
 import ImageResponsive from "@/core/library/atoms/ImageResponsive.atom";
+import Callout from "@/core/library/atoms/Callout.atom";
 
 export default function MarkdownContainer({ markdownContent, articleId }) {
     const ID = useId();
@@ -19,6 +20,7 @@ export default function MarkdownContainer({ markdownContent, articleId }) {
         LinkList,
         ImageSvg,
         ImageResponsive,
+        Callout,
     };
 
     return (

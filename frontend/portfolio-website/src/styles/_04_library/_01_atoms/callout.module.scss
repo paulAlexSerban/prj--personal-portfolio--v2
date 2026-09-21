@@ -1,0 +1,26 @@
+@import '../../_00_abstracts/abstracts.scss';
+$breakpoints: $column-grid-12;
+$useModules: true;
+$block: 'callout';
+
+/* ------------------------------------ *\
+ * CALLOUT ATOM (MDX)
+\* ------------------------------------ */
+
+.#{$block} {
+    @include e('base') {
+        grid-column: span 12;
+        padding: var(--responsive-spacing-1) var(--responsive-spacing-2);
+        border-left: 4px solid var(--primary-color, currentColor);
+        background-color: var(--focus-background-color);
+
+        @include breakpoint($tablet) {
+            grid-column: span 8;
+        }
+
+        &[data-callout-type='warning'],
+        &[data-callout-type='danger'] {
+            border-left-color: #c45c26;
+        }
+    }
+}

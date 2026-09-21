@@ -7,24 +7,15 @@ const FALLBACK_FORMAT = 'png';
 const DEFAULT_QUALITY = 80;
 const IMAGE_EXTENSION_REGEX = /\.(avif|webp|jpe?g|png|gif|svg)$/i;
 
-
 /**
- * The ImageResponsive component generates responsive image URLs based on the provided image name,
- * content hash, aspect ratios, and widths.
- * It uses the <picture> element to serve different image formats (AVIF, WebP) and falls back to PNG if necessary.
- * 
- * Matrix:
- * | Aspect Ratios           | 0 = 1x1          | 1 = 4x3          | 2 = 16x9          | 3 = 21x9           | 4 = 3x4            |
- * | Responsive Widths       | 0 = 480px        | 1 = 960px        | 2 = 1280px        | 3 = 1920px         | 4 = 2560px         |
- * | Responsive Breakpoints  | xs               | sm               | md                | lg                 | xl                 |
- * | Resulting Image Example | hero-480x480-1x1-q80.abcdef12.avif | hero-960x720-4x3-q80.abcdef12.webp | hero-1280x720-16x9-q80.abcdef12.png | hero-1920x1080-16x9-q80.abcdef12.avif | hero-2560x1440-16x9-q80.abcdef12.webp |
- * 
- * Example
+ * Aspect ratio / width matrix (same contract as content--paulserban.eu assets & v3 ImageResponsive):
+ * | Aspect Ratios           | 0 = 1x1   | 1 = 4x3   | 2 = 16x9  | 3 = 21x9  | 4 = 3x4   |
+ * | Responsive Widths       | 0 = 480px | 1 = 960px | 2 = 1280px| 3 = 1920px| 4 = 2560px|
+ * | Responsive Breakpoints  | xs        | sm        | md        | lg        | xl        |
  */
 const ASPECT_RATIOS = ['1x1', '4x3', '16x9', '21x9', '3x4'];
 const RESPONSIVE_WIDTHS = [480, 960, 1280, 1920, 2560];
 const RESPONSIVE_KEYS = ['xs', 'sm', 'md', 'lg', 'xl'];
-
 
 const ASPECT_RATIO_DIMENSIONS = {
     '1x1': {
@@ -38,10 +29,6 @@ const ASPECT_RATIO_DIMENSIONS = {
         480: [480, 360],
         960: [960, 720],
         1280: [1280, 960],
-        1920: [1920, 1440],
-        2560: [2560, 1920],
-    },
-    '16x9': {
         480: [480, 270],
         960: [960, 540],
         1280: [1280, 720],
@@ -64,9 +51,12 @@ const ASPECT_RATIO_DIMENSIONS = {
     },
 };
 
+const DEFAULT_RATIO_INDEXES = [2, 2, 2, 2, 2];
+const DEFAULT_WIDTH_INDEXES = [0, 1, 2, 3, 4];
+const DEFAULT_SIZES = '(max-width: 768px) 100vw, 66vw';
+
 const stripExtension = (value = '') => {
     const [pathWithoutQuery] = String(value).split(/[?#]/);
-
     return pathWithoutQuery.replace(IMAGE_EXTENSION_REGEX, '');
 };
 
@@ -97,22 +87,20 @@ const normalizeIndexes = (value, fallback) => {
     if (typeof value === 'string') {
         try {
             const parsed = JSON.parse(value);
-
             if (Array.isArray(parsed) && parsed.length === 5) {
                 return parsed;
             }
         } catch {
-            return fallback;
+            return [...fallback];
         }
     }
 
-    return fallback;
+    return [...fallback];
 };
 
 const toImageUrl = (imageName, hash, ratio, width, format) => {
     const [fileWidth, fileHeight] = ASPECT_RATIO_DIMENSIONS[ratio][width];
     const filename = `${imageName}-${fileWidth}x${fileHeight}-${ratio}-q${DEFAULT_QUALITY}.${hash}.${format}`;
-
     return `${IMAGE_BASE_URL}/${filename}`;
 };
 
@@ -138,7 +126,9 @@ const createSrcSet = (imageName, hash, ratioIndexes, widthIndexes, format) => {
 };
 
 /**
- * Usage example:
+ * Responsive <picture> for content MDX (same asset naming contract as v3 / content pipeline).
+ *
+ * @example
  * <ImageResponsive
  *   imageName="hero-banner"
  *   alt="Developer workspace"
@@ -146,41 +136,65 @@ const createSrcSet = (imageName, hash, ratioIndexes, widthIndexes, format) => {
  *   widthsStr="[0,1,2,3,4]"
  *   hash="a3f91c2b"
  * />
- *
- * Both examples resolve to responsive files like:
- * hero-banner-480x270-16x9-q80.a3f91c2b.avif,
- * hero-banner-960x540-16x9-q80.a3f91c2b.webp,
- * hero-banner-1280x720-16x9-q80.a3f91c2b.png
  */
-const ImageResponsive = ({ imageName, alt, ratiosStr = '[2,2,2,2,2]', widthsStr = '[0,1,2,3,4]', hash }) => {
+const ImageResponsive = ({
+    imageName,
+    alt,
+    ratiosStr = '[2,2,2,2,2]',
+    widthsStr = '[0,1,2,3,4]',
+    hash,
+    sizes = DEFAULT_SIZES,
+    className = '',
+    imgClassName = '',
+    loading = 'lazy',
+}) => {
     const normalizedImageName = normalizeImageName(imageName);
     const normalizedHash = normalizeHash(hash);
-    const ratioIndexes = normalizeIndexes(ratiosStr, [2, 2, 2, 2, 2]);
-    const widthIndexes = normalizeIndexes(widthsStr, [0, 1, 2, 3, 4]);
-    const fallbackEntry = buildSrcSetEntries(normalizedImageName, normalizedHash, ratioIndexes, widthIndexes, FALLBACK_FORMAT)[0];
+    const ratioIndexes = normalizeIndexes(ratiosStr, DEFAULT_RATIO_INDEXES);
+    const widthIndexes = normalizeIndexes(widthsStr, DEFAULT_WIDTH_INDEXES);
+    const fallbackEntry = buildSrcSetEntries(
+        normalizedImageName,
+        normalizedHash,
+        ratioIndexes,
+        widthIndexes,
+        FALLBACK_FORMAT
+    )[0];
 
     if (!normalizedImageName || !normalizedHash) {
         return null;
     }
 
     return (
-        <div className={base}>
+        <div className={`${base} ${className}`.trim()}>
             <picture>
                 {ACCEPTED_FORMATS.map((format) => (
                     <source
                         key={format}
                         type={`image/${format}`}
-                        srcSet={createSrcSet(normalizedImageName, normalizedHash, ratioIndexes, widthIndexes, format)}
-                        sizes="(max-width: 768px) 100vw, 66vw"
+                        srcSet={createSrcSet(
+                            normalizedImageName,
+                            normalizedHash,
+                            ratioIndexes,
+                            widthIndexes,
+                            format
+                        )}
+                        sizes={sizes}
                     />
                 ))}
                 <img
                     src={fallbackEntry.src}
-                    srcSet={createSrcSet(normalizedImageName, normalizedHash, ratioIndexes, widthIndexes, FALLBACK_FORMAT)}
-                    sizes="(max-width: 768px) 100vw, 66vw"
+                    srcSet={createSrcSet(
+                        normalizedImageName,
+                        normalizedHash,
+                        ratioIndexes,
+                        widthIndexes,
+                        FALLBACK_FORMAT
+                    )}
+                    sizes={sizes}
                     alt={alt}
-                    loading="lazy"
+                    loading={loading}
                     decoding="async"
+                    className={imgClassName}
                 />
             </picture>
         </div>
