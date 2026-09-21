@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.22.0...v1.23.0) (2026-09-21)
+
+
+### Features
+
+* adjust pipeline ([2d6741b](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/commit/2d6741b3d28576cb3dc408f845c306cc2079cce5))
+
 # [1.22.0](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.21.1...v1.22.0) (2026-09-21)
 
 
