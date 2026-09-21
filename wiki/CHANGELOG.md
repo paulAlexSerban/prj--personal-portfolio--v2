@@ -1,6 +1,19 @@
 # [1.23.0](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.22.0...v1.23.0) (2026-09-21)
 
 
+### Bug Fixes
+
+* merge branch ([9b25a34](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/commit/9b25a34b9f465caa26871c962a8d800325c19911))
+* missing path ([fd79799](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/commit/fd797998f4f6dcba264994f2849d4518599a6585))
+
+
+### Features
+
+* adjust pipeline ([2d6741b](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/commit/2d6741b3d28576cb3dc408f845c306cc2079cce5))
+
+# [1.23.0](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/compare/v1.22.0...v1.23.0) (2026-09-21)
+
+
 ### Features
 
 * adjust pipeline ([2d6741b](https://github.com/paulAlexSerban/prj--personal-portfolio--v2/commit/2d6741b3d28576cb3dc408f845c306cc2079cce5))
