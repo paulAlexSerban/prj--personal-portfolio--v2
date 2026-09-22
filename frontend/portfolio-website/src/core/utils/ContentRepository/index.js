@@ -10,6 +10,13 @@ const CONTENT_DIRECTORY = './content/dist';
 const TYPE_PATTERNS = /^(projects|coursework|posts|booknotes|snippets)$/;
 const EXCLUDED_CONTENT_SUBDIRS = new Set(['questions', 'cheat_sheet', 'learning_plan', 'intermediary']);
 
+function toStringList(value) {
+    if (!Array.isArray(value)) {
+        return [];
+    }
+    return value.filter((item) => typeof item === 'string' && item.length > 0);
+}
+
 /**
  * Recursively collect MDX content files.
  * Accepts:
@@ -116,8 +123,8 @@ class ContentRepository {
     async setupTags() {
         const tags = Object.keys(this.parsedContent).reduce((acc, type) => {
             this.parsedContent[type].forEach((item) => {
-                const itemTags = item.content.frontmatter.tags;
-                if (itemTags && itemTags.length > 0) {
+                const itemTags = toStringList(item.content.frontmatter.tags);
+                if (itemTags.length > 0) {
                     itemTags.forEach((tag) => {
                         const sanitizedTag = sanitizeQueryString(tag);
                         acc[sanitizedTag] = tag;
@@ -138,8 +145,8 @@ class ContentRepository {
     async setupCategories() {
         return Object.keys(this.parsedContent).reduce((acc, type) => {
             this.parsedContent[type].forEach((item) => {
-                const itemCategories = item.content.frontmatter.categories;
-                if (itemCategories && itemCategories.length > 0) {
+                const itemCategories = toStringList(item.content.frontmatter.categories);
+                if (itemCategories.length > 0) {
                     itemCategories.forEach((category) => {
                         const sanitizedCategory = sanitizeQueryString(category);
                         if (!acc.includes(sanitizedCategory)) {
@@ -166,7 +173,7 @@ class ContentRepository {
 
     async findByTag(type, tag) {
         return this.parsedContent[type].filter((item) => {
-            const { tags } = item.content.frontmatter;
+            const tags = toStringList(item.content.frontmatter.tags);
             return tags.includes(tag);
         });
     }
